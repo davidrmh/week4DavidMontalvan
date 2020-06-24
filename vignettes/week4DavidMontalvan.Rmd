@@ -1,0 +1,60 @@
+---
+title: "week4DavidMontalvan"
+author: "David Montalvan"
+date: "2020/06/24"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{week4DavidMontalvan}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette the functions for the package `week4DavidMontalvan` are explained.
+
+```{r, eval = FALSE}
+library(week4DavidMontalvan)
+```
+## `fars_read`
+
+`fars_read` reads the csv file with the data from
+the **US National Highway Traffic Safety Administration's
+Fatality Analysis Reporting System**.
+
+```{r, eval = FALSE}
+fars_read("path/to/csv")
+```
+
+## `make_filename`
+
+`make_filename` creates a character vector using
+a numeric vector with the years.
+
+```{r, eval = FALSE}
+make_file(2015)
+```
+
+## `fars_read_years`
+
+`fars_read_years` takes a numeric vector with the
+years to read.
+
+```{r, eval = FALSE}
+fars_read_years(c(2015, 2014))
+```
+
+## `fars_map_state`
+
+`fars_map_state` takes a state number and a year and
+creates a map for the subset of data corresponding
+to those values.
+
+```{r, eval = FALSE}
+fars_map_state(15, 2015)
+```
