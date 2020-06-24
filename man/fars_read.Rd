@@ -11,9 +11,9 @@ fars_read(filename)
 the US National Highway Traffic Safety Administration's
 Fatality Analysis Reporting System.
 
-@param  filename Character with the path to the file.
+@param filename Character with the path to the file.
 
-@details If \code{filename} is not found then stops.
+@details If filename is not found then stops.
 
 @return A tibble dataframe
 

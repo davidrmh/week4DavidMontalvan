@@ -4,9 +4,9 @@
 #'  the US National Highway Traffic Safety Administration's
 #'  Fatality Analysis Reporting System.
 #'
-#'  @param  filename Character with the path to the file.
+#'  @param filename Character with the path to the file.
 #'
-#'  @details If `filename` is not found then stops.
+#'  @details If filename is not found then stops.
 #'
 #'  @return A tibble dataframe
 #'
@@ -44,7 +44,7 @@ fars_read <- function(filename) {
 #' @examples
 #' make_filename(2010)
 #' make_filename(c(2010,2020))
-#'
+#' @export
 make_filename <- function(year) {
         year <- as.integer(year)
         sprintf("accident_%d.csv.bz2", year)

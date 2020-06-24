@@ -24,5 +24,4 @@ a numeric vector with the years.
 \examples{
 make_filename(2010)
 make_filename(c(2010,2020))
-
 }
