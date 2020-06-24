@@ -17,3 +17,5 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+URL: https://github.com/davidrmh/week4DavidMontalvan
+BugReports: https://github.com/davidrmh/week4DavidMontalvan/issues
