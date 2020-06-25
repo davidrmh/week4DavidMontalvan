@@ -7,7 +7,7 @@
 make_filename(year)
 }
 \arguments{
-\item{year}{Numeric vector}
+\item{year}{Numeric vector.}
 }
 \value{
 A character vector following the pattern

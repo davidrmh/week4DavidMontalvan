@@ -1,22 +1,19 @@
 #' Reads the csv file
+#'
 #' @description
-#' `fars_read` reads the csv file with the data from
+#'  Reads the csv file with the data from
 #'  the US National Highway Traffic Safety Administration's
 #'  Fatality Analysis Reporting System.
 #'
-#'  @param filename Character with the path to the file.
+#' @param filename Character with the path to the file.
 #'
-#'  @details If filename is not found then stops.
+#' @return A tibble dataframe.
 #'
-#'  @return A tibble dataframe
+#' @details If filename is not found then stops.
 #'
-#'  @examples
-#'  \dontrun{
-#'  fars_read("path/to/file")
-#'  }
+#' @import readr
 #'
-#'  @import readr
-#'  @import dplyr
+#' @import dplyr
 fars_read <- function(filename) {
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
@@ -32,7 +29,7 @@ fars_read <- function(filename) {
 #' `make_filename` creates a character vector using
 #' a numeric vector with the years.
 #'
-#' @param year Numeric vector
+#' @param year Numeric vector.
 #'
 #' @return
 #' A character vector following the pattern
@@ -75,7 +72,7 @@ fars_read_years <- function(years) {
                 tryCatch({
                         dat <- fars_read(file)
                         dplyr::mutate(dat, year = year) %>%
-                                dplyr::select(MONTH, year)
+                                dplyr::select(dat$MONTH, year)
                 }, error = function(e) {
                         warning("invalid year: ", year)
                         return(NULL)
@@ -104,9 +101,10 @@ fars_read_years <- function(years) {
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr::bind_rows(dat_list) %>%
-                dplyr::group_by(year, MONTH) %>%
+                dplyr::group_by(dat_list$year,
+                                dat_list$MONTH) %>%
                 dplyr::summarize(n = n()) %>%
-                tidyr::spread(year, n)
+                tidyr::spread(dat_list$year, n)
 }
 
 #' Function to create a map for a given state
@@ -133,7 +131,8 @@ fars_map_state <- function(state.num, year) {
 
         if(!(state.num %in% unique(data$STATE)))
                 stop("invalid STATE number: ", state.num)
-        data.sub <- dplyr::filter(data, STATE == state.num)
+        data.sub <- dplyr::filter(data,
+                                  data$STATE == state.num)
         if(nrow(data.sub) == 0L) {
                 message("no accidents to plot")
                 return(invisible(NULL))

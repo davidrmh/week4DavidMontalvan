@@ -6,22 +6,17 @@
 \usage{
 fars_read(filename)
 }
+\arguments{
+\item{filename}{Character with the path to the file.}
+}
+\value{
+A tibble dataframe.
+}
 \description{
-\code{fars_read} reads the csv file with the data from
+Reads the csv file with the data from
 the US National Highway Traffic Safety Administration's
 Fatality Analysis Reporting System.
-
-@param filename Character with the path to the file.
-
-@details If filename is not found then stops.
-
-@return A tibble dataframe
-
-@examples
-\dontrun{
- fars_read("path/to/file")
- }
-
-@import readr
-@import dplyr
+}
+\details{
+If filename is not found then stops.
 }
